@@ -109,7 +109,7 @@ input:-webkit-autofill:focus {
    outline: 2px solid rgba(255, 255, 255, 0.7);
  }
 
-button {
+.send-btn {
    width: 35px;
    height: 35px;
    border: 1px solid #ffffff75;
@@ -139,7 +139,7 @@ button:active {
    /* border: 1px solid red; */
 }
 
-ul {
+.social-ul {
    width: 160px;  
    /* text-align: center; */
    margin-left: 75px;
@@ -151,7 +151,7 @@ ul {
    /* border: 1px solid red; */
 }
 
-ul li {
+.social-ul li {
    width: 40px;
    height: 40px;
    background: #ffffff50;
@@ -159,12 +159,12 @@ ul li {
    border: 1px solid #ffffff50;
 }
 
-ul li:hover {
+.social-ul li:hover {
    background: #ffffff70;
 
 }
 
-ul li a img {
+.social-ul li img {
    width: 30px;
    height: 30px;
    margin: 5px 4px;

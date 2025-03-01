@@ -77,20 +77,20 @@ const Dashboard = () => {
           return 59;
         } else {
           clearInterval(countdown);
-          setIsCountdownFinished(true); // Hisoblagich tugadi
-          navigate("/endtime"); // Vaqt tugaganda /endtime sahifasiga o'tish
+          setIsCountdownFinished(true);
+          navigate(`/endtime/${language}`); // URL-da tilni ko‘rsatish
           return 0;
         }
       });
 
       if (minutes === 0 && hours === 0 && days === 0 && seconds === 0) {
         clearInterval(countdown);
-        setIsCountdownFinished(true); // Hisoblagich tugadi
+        setIsCountdownFinished(true);
       }
     }, 1000);
 
     return () => clearInterval(countdown);
-  }, [days, hours, minutes, seconds, navigate]);
+  }, [days, hours, minutes, seconds, navigate, language]);
 
   const handleSubscribe = async () => {
     if (email.trim() === "") {
@@ -136,6 +136,9 @@ const Dashboard = () => {
     const selectedLang = e.target.value;
     setLanguage(selectedLang);
     localStorage.setItem("language", selectedLang);
+    
+    // URL ni yangilash
+    navigate(`/dashboard/${selectedLang}`); // Yangi til bilan URL-ni yangilang
   };
 
   return (
@@ -186,11 +189,11 @@ const Dashboard = () => {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        <button type="button" onClick={handleSubscribe}>
+        <button className="send-btn" type="button" onClick={handleSubscribe}>
           <img src="/icons/email.png" alt="email" />
         </button>
         <p className="social">{translations[language].socialText}</p>
-        <ul>
+        <ul className="social-ul">
           <li>
             <a href="#">
               <img src="/icons/telegram.png" alt="" />

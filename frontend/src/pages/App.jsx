@@ -1,20 +1,29 @@
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import Dashboard from "../pages/Dashboard";
-import EndTime from "../components/Endtime"; 
-
-const App = () => {
+import {
+    BrowserRouter as Router,
+    Routes,
+    Route,
+    Navigate,
+  } from "react-router-dom";
+  import Dashboard from "../pages/Dashboard";
+  import EndTime from "../components/Endtime";
+  import Signup from "./Signup";
+  
+  const App = () => {
     return (
-        <Router>
-            <nav>
-                <Link to="/"></Link>
-                {/* Agar boshqa sahifalar bo‘lsa, shu joyga qo‘shing */}
-            </nav>
-            <Routes>
-                <Route path="/" element={<Dashboard />} />
-                <Route path="/endtime" element={<EndTime />} /> {/* EndTime sahifasini qo'shish */}
-            </Routes>
-        </Router>
+      <Router>
+        <Routes>
+          {/* Asosiy sahifani dashboardga yo‘naltiramiz */}
+          <Route path="/" element={<Navigate to="/dashboard/en" replace />} />
+          <Route path="/:lang" element={<Navigate to="/dashboard/:lang" replace />} />
+  
+          {/* Sahifalar */}
+          <Route path="/dashboard/:lang" element={<Dashboard />} />
+          <Route path="/endtime/:lang" element={<EndTime />} />
+          <Route path="/signup/:lang" element={<Signup />} />
+        </Routes>
+      </Router>
     );
-};
-
-export default App;
+  };
+  
+  export default App;
+  

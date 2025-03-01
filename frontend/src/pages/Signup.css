@@ -1,0 +1,257 @@
+.sign-up {
+   width: 100vw;
+   height: 100vh;
+   display: flex;
+   align-items: center;
+   flex-direction: row;
+   justify-content: center;
+   background-color: #ffffff30;
+   backdrop-filter: blur(10px);
+   /* Blur effekti */
+   -webkit-backdrop-filter: blur(10px);
+   /* Safari uchun */
+   color: #fff;
+}
+
+.leftSide {
+   width: 635px;
+   height: 705px;
+   border-radius: 15px;
+   background: url(/images/backgraund.jpg) no-repeat center center / cover;
+}
+
+.leftSideTitle {
+   margin: 15px;
+   font-size: 20px;
+   font-family: 'Merienda-Regular';
+   color: #ffffff;
+   background: transparent;
+}
+
+.leftSideTitle:hover {
+   background: transparent;
+}
+
+.leftSideTitle:active {
+   color: #ffffff99;
+}
+
+.rightSide {
+   width: 865px;
+   height: 705px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   flex-direction: column;
+   /* outline: 1px solid red;  */
+}
+
+.rightSideTitle {
+   margin-top: 30px;
+   font-size: 41px;
+   font-family: 'RobotoMono-Medium';
+   letter-spacing: -3px;
+}
+
+.rightSideTitleText {
+   margin-top: 2px;
+   font-size: 31px;
+   font-family: 'RobotoMono-Medium';
+}
+
+#inputsNameInp {
+   display: flex;
+   flex-direction: column;
+   margin-top: 50px;
+   gap: 25px;
+}
+
+#inputsNameInp .input-field {
+   width: 400px;
+   height: 45px;
+   color: #ffffff;
+   background: #ffffff30;
+   border: 1px solid #EBEBEB75;
+   padding-left: 65px;
+   border-radius: 30px;
+   font-size: 13px;
+   font-family: 'inter-Medium';
+}
+
+#inputsNameInp input::placeholder {
+   color: #ffffff80;
+   font-size: 13px;
+   font-family: 'inter-Medium';
+}
+
+.input-container {
+   position: relative;
+   width: 400px;
+}
+
+.input-container::before {
+   content: "";
+   position: absolute;
+   left: 0;
+   top: 0;
+   width: 47px;
+   height: 100%;
+   background: #ffffff30;
+   border-top-left-radius: 30px;
+   border-bottom-left-radius: 30px;
+}
+
+.input-icon {
+   position: absolute;
+   left: 12px;
+   top: 50%;
+   transform: translateY(-50%);
+   width: 27px;
+   height: 27px;
+   z-index: 1;
+}
+
+.email-inp {
+   width: 22px;
+   height: 22px;
+   left: 14px;
+}
+
+.input-field::placeholder {
+   color: rgba(255, 255, 255, 0.7);
+}
+
+#inputsNameInp .input-field:focus-within {
+   background: #FFFFFF20;
+   outline: 2px solid #FFFFFF90;
+}
+
+#check-terms {
+   top: 5px;
+   left: 15px;
+}
+
+#check-terms[type="checkbox"] {
+   appearance: none;
+   width: 27px;
+   height: 20px;
+   border: 3px solid #ffffff;
+   border-radius: 4px;
+   cursor: pointer;
+   display: inline-block;
+   position: relative;
+   background: transparent;
+}
+
+#check-terms[type="checkbox"]:checked::before {
+   content: "✓";
+   font-size: 14px;
+   font-weight: bold;
+   color: #ffffff;
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+}
+
+aside {
+   width: 380px;
+   display: flex;
+   align-items: center;
+   font-size: 14px;
+   font-family: 'Inter-Regular';
+   color: #FFFFFF90;
+   line-height: 1.5;
+}
+
+label {
+   font-size: 13px;
+   font-family: 'Inter-Regular';
+   color: #FFFFFF50;
+   margin-left: 25px;
+   margin-top: 15px;
+}
+
+aside a {
+   color: #FFFFFFD0;
+   text-decoration: none;
+   transition: 0.3s ease;
+   font-weight: bold;
+}
+
+aside a:hover {
+   color: #FFFFFF;
+   text-decoration: underline;
+}
+
+.button-container {
+   display: flex;
+   gap: 20px;
+   /* Tugmalar orasidagi masofa */
+   margin-top: 30px;
+   /* Yuqoridan biroz masofa */
+}
+
+
+.btn-reg {
+   width: 160px;
+   height: 45px;
+   font-size: 15px;
+   font-family: 'Ubuntu-Medium';
+   color: #FFFFFF;
+   border: 1px solid #EBEBEB80;
+   background: #ffffff40;
+   border-radius: 10px;
+}
+
+.btn-log {
+   width: 120px;
+   height: 45px;
+   font-size: 15px;
+   font-family: 'Ubuntu-Medium';
+   color: #FFFFFF;
+   border: 1px solid #EBEBEB80;
+   background: #ffffff40;
+   border-radius: 10px;
+}
+
+.btn:hover {
+   background: #ffffff60;
+}
+
+.btn:active {
+   background: #ffffff40;
+}
+
+.rightSideOtherAcc {
+   margin-top: 30px;
+   color: #FFFFFF70;
+   font-size: 13px;
+   font-family: 'Inter-Regular';
+}
+
+.rightSideOtherbtn {
+   margin-top: 30px;
+   display: flex;
+   gap: 30px;
+}
+
+.rightSideOtherbtn li {
+   width: 65px;
+   height: 55px;
+   background: #ffffff50;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   border-radius: 8px;
+   border: 1px solid #EBEBEB50;
+   cursor: pointer;
+}
+
+.rightSideOtherbtn li:hover {
+   background: #ffffff70;
+}
+
+.rightSideOtherbtn li:active {
+   background: #ffffff50;
+}
