@@ -1,0 +1,259 @@
+.loginSide {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  background-color: #ffffff30;
+  backdrop-filter: blur(10px);
+  /* Blur effekti */
+  -webkit-backdrop-filter: blur(10px);
+  /* Safari uchun */
+  color: #fff;
+}
+
+.loginLeftSide {
+  width: 865px;
+  height: 705px;
+  /* border: 1px solid red; */
+}
+
+.loginSideTitle {
+  margin: 15px;
+  font-size: 20px;
+  font-family: "Merienda-Regular";
+  color: #ffffff;
+  background: transparent;
+}
+
+.loginLeftSideTitlw:hover {
+  background: transparent;
+}
+
+.loginLeftSideTitlw:active {
+  color: #ffffff99;
+}
+
+.SideInform {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.InformTitle {
+  min-width: 390px;
+  max-width: 400px;
+  margin-top: 40px;
+  font-size: 31px;
+  font-family: "RobotoMono-Medium";
+  letter-spacing: -3px;
+  text-align: center;
+}
+
+#loginInp {
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px;
+  gap: 25px;
+}
+
+#loginInp .log-input-field {
+  width: 400px;
+  height: 45px;
+  color: #ffffff;
+  background: #ffffff30;
+  border: 1px solid #ebebeb75;
+  padding-left: 65px;
+  border-radius: 30px;
+  font-size: 13px;
+  font-family: "inter-Medium";
+}
+
+#loginInp input::placeholder {
+  color: #ffffff80;
+  font-size: 13px;
+  font-family: "inter-Medium";
+}
+
+.log-input-container {
+  position: relative;
+  width: 400px;
+}
+
+.log-input-container::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 47px;
+  height: 100%;
+  background: #ffffff30;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+}
+
+.log-input-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 27px;
+  height: 27px;
+  z-index: 1;
+}
+
+.email-inp {
+  width: 22px;
+  height: 22px;
+  left: 14px;
+}
+
+.toggle-password {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.toggle-password:hover {
+  background-color: none;
+}
+
+.toggle-password i {
+  font-size: 13px;
+  color: #ffffff80;
+  margin-right: 5px;
+}
+
+.toggle-password i:hover {
+  color: #ffffff;
+}
+
+.log-input-field::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+#loginInp .log-input-field:focus-within {
+  background: #ffffff20;
+  outline: 2px solid #ffffff90;
+}
+
+#log-check-terms {
+  top: 5px;
+  left: 15px;
+}
+
+#log-check-terms[type="checkbox"] {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 3px solid #ffffff;
+  border-radius: 4px;
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  background: transparent;
+}
+
+#log-check-terms[type="checkbox"]:checked::before {
+  content: "✓";
+  font-size: 14px;
+  font-weight: bold;
+  color: #ffffff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.log-check-terms-asd {
+  width: 375px;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-family: "Inter-Regular";
+  color: #ffffff90;
+  line-height: 1.5;
+}
+
+.log-check-terms-asd label {
+  font-size: 13px;
+  font-family: "Inter-Regular";
+  color: #ffffff50;
+  margin-left: 25px;
+  margin-top: 15px;
+  display: flex;
+  gap: 100px;
+}
+
+.log-check-terms-asd a {
+  color: #ffffff80;
+  text-decoration: none;
+  transition: 0.3s ease;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.log-check-terms-asd a:hover {
+  color: #ffffff;
+}
+
+.log-btn-container {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin-top: 40px;
+}
+
+.log-btn-log {
+  min-width: 120px;
+  max-width: 200px;
+  padding: 0 15px;
+  height: 45px;
+  font-size: 15px;
+  font-family: "Ubuntu-Medium";
+  color: #ffffff;
+  border: 1px solid #ebebeb80;
+  background: #ffffff40;
+  border-radius: 10px;
+}
+
+.log-btn-reg {
+  min-width: 120px;
+  padding: 0 15px;
+  height: 45px;
+  font-size: 15px;
+  font-family: "Ubuntu-Medium";
+  color: #ffffff;
+  border: 1px solid #ebebeb80;
+  background: #ffffff40;
+  border-radius: 10px;
+}
+
+.btn:hover {
+  background: #ffffff60;
+}
+
+.btn:active {
+  background: #ffffff40;
+}
+
+.rightSideOtherAcc {
+  margin-top: 70px;
+}
+
+/* right sie */
+
+.loginRightSide {
+  width: 635px;
+  height: 705px;
+  border-radius: 15px;
+  background: url(/images/backgraund.jpg) no-repeat center center / cover;
+  /* border: 1px solid red; */
+}

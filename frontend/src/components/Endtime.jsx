@@ -64,10 +64,7 @@ const Endtime = () => {
       )}
 
       {/* Home tugmasi */}
-      <button
-        className="home-btn"
-        onClick={() => navigate(`/dashboard/${lang}`)}
-      >
+      <button className="home-btn" onClick={() => navigate(`/home/${lang}`)}>
         Home
       </button>
 

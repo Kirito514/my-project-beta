@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import Notification from "../components/Notification";
 import "./Signup.css";
 
@@ -63,7 +64,16 @@ const messages = {
 };
 
 const Signup = () => {
-  const [language, setLanguage] = useState("en");
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [showPassword, setShowPassword] = useState(false);
+
+  const getLanguageFromURL = () => {
+    const langFromURL = location.pathname.split("/")[2]; // /signup/en
+    return messages[langFromURL] ? langFromURL : "en";
+  };
+
+  const [language, setLanguage] = useState(getLanguageFromURL);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -73,6 +83,18 @@ const Signup = () => {
   const [notification, setNotification] = useState({ message: "", type: "" });
 
   const text = messages[language];
+
+  useEffect(() => {
+    localStorage.setItem("selectedLanguage", language);
+    navigate(`/signup/${language}`, { replace: true });
+  }, [language]);
+
+  useEffect(() => {
+    const storedLanguage = localStorage.getItem("selectedLanguage");
+    if (storedLanguage && messages[storedLanguage]) {
+      setLanguage(storedLanguage);
+    }
+  }, []);
 
   const handleLanguageChange = (e) => {
     setLanguage(e.target.value);
@@ -89,15 +111,15 @@ const Signup = () => {
   const handleSubmit = async () => {
     if (!formData.name || !formData.email || !formData.password) {
       setNotification({
-        message: messages[language].notification.emptyFields,
+        message: text.notification.emptyFields,
         type: "error",
       });
       return;
     }
 
-    if (!formData.email.includes("@")) {
+    if (!/\S+@\S+\.\S+/.test(formData.email)) {
       setNotification({
-        message: messages[language].notification.invalidEmail,
+        message: text.notification.invalidEmail,
         type: "error",
       });
       return;
@@ -105,7 +127,7 @@ const Signup = () => {
 
     if (!formData.termsAccepted) {
       setNotification({
-        message: messages[language].notification.termsRequired,
+        message: text.notification.termsRequired,
         type: "error",
       });
       return;
@@ -116,7 +138,7 @@ const Signup = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Accept-Language": language, // 🛠 Tilingizni serverga jo‘natamiz
+          "Accept-Language": language,
         },
         body: JSON.stringify({
           name: formData.name,
@@ -129,8 +151,6 @@ const Signup = () => {
 
       if (response.ok) {
         setNotification({ message: data.message, type: "success" });
-
-        // 🔄 Inputlarni tozalash
         setFormData({
           name: "",
           email: "",
@@ -141,9 +161,8 @@ const Signup = () => {
         setNotification({ message: data.message, type: "error" });
       }
     } catch (error) {
-      console.error("Xatolik:", error);
       setNotification({
-        message: messages[language].notification.serverError,
+        message: text.notification.serverError,
         type: "error",
       });
     }
@@ -156,7 +175,7 @@ const Signup = () => {
       <div className="leftSide">
         <button
           className="leftSideTitle"
-          onClick={() => (window.location.href = "/dashboard")}
+          onClick={() => navigate("/comingsoon")}
         >
           My Project’s
         </button>
@@ -211,23 +230,30 @@ const Signup = () => {
             />
           </div>
 
-          <div className="input-container">
+          <div className="input-container password-container">
             <img
               src="../icons/lock.png"
               alt="Password Icon"
               className="input-icon"
             />
             <input
-              type="password"
+              type={showPassword ? "text" : "password"}
               name="password"
               placeholder={text.passwordPlaceholder}
               className="input-field"
               value={formData.password}
               onChange={handleChange}
             />
+            <button
+              type="button"
+              className="toggle-password"
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              <i className={showPassword ? "fa fa-eye" : "fa fa-eye-slash"}></i>
+            </button>
           </div>
 
-          <aside>
+          <aside className="check-terms-asd">
             <input
               type="checkbox"
               id="check-terms"
@@ -245,7 +271,12 @@ const Signup = () => {
           <button type="button" className="btn btn-reg" onClick={handleSubmit}>
             {text.register}
           </button>
-          <button type="button" className="btn btn-log">
+          {/* ✅ Foydalanuvchini login sahifasiga yo‘naltirish */}
+          <button
+            type="button"
+            className="btn btn-log"
+            onClick={() => navigate(`/login/${language}`)}
+          >
             {text.login}
           </button>
         </div>

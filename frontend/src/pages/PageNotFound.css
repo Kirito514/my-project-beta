@@ -1,0 +1,48 @@
+.notFound {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+
+  color: #fff;
+}
+
+.notFound h1 {
+  margin-top: -70px;
+  font-size: 40px;
+  font-family: "RobotoMono-Bold";
+}
+
+.notFound h2 {
+  margin-top: 10px;
+  font-size: 100px;
+  font-family: "Roboto-Medium";
+}
+
+.notFound p {
+  margin-top: 20px;
+  font-size: 30px;
+  font-family: "Inter-SemiBold";
+  color: #ffffff80;
+}
+
+.home-link {
+  margin-top: 40px;
+  font-size: 18px;
+  font-family: "Inter-SemiBold";
+  transition: color 0.2s ease;
+}
+
+.home-link i {
+  margin-right: 7px;
+}
+
+.home-link:hover {
+  color: #ffffff80;
+}
+
+.home-link:active {
+  color: #ffffff;
+}
