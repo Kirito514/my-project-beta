@@ -11,7 +11,7 @@ const Dashboard = () => {
     const storedUser = JSON.parse(localStorage.getItem("user"));
 
     if (!storedUser) {
-      navigate(`/login/${lang}`);
+      navigate(`/login/${lang}`); // 🔴 Agar user yo‘q bo‘lsa, login sahifasiga o‘tkazish
     } else {
       setUser(storedUser);
     }

@@ -54,43 +54,59 @@ const Comingsoon = () => {
   const [email, setEmail] = useState("");
   const [notification, setNotification] = useState({ message: "", type: "" });
   const [language, setLanguage] = useState(
-    localStorage.getItem("language") || "en",
+    localStorage.getItem("language") || "en"
   );
   const [isCountdownFinished, setIsCountdownFinished] = useState(false); // Hisoblagich tugaganligini nazorat qilish
   const navigate = useNavigate(); // useNavigate hookini chaqirish
-
   useEffect(() => {
     const countdown = setInterval(() => {
-      setSeconds((prev) => {
-        if (prev > 0) return prev - 1;
-
-        if (minutes > 0 || hours > 0 || days > 0) {
-          if (minutes === 0 && hours > 0) {
-            setHours((h) => h - 1);
-            setMinutes(59);
-          } else if (seconds === 0) {
-            setMinutes((m) => {
-              if (m > 0) return m - 1;
-              return 0;
-            });
-          }
-          return 59;
-        } else {
-          clearInterval(countdown);
-          setIsCountdownFinished(true);
-          navigate(`/endtime/${language}`); // URL-da tilni ko‘rsatish
-          return 0;
+      setSeconds((prevSeconds) => {
+        if (prevSeconds > 0) {
+          return prevSeconds - 1;
         }
+
+        return 59;
       });
 
-      if (minutes === 0 && hours === 0 && days === 0 && seconds === 0) {
-        clearInterval(countdown);
-        setIsCountdownFinished(true);
-      }
+      setMinutes((prevMinutes) => {
+        if (seconds === 0) {
+          if (prevMinutes > 0) {
+            return prevMinutes - 1;
+          }
+
+          return 59;
+        }
+        return prevMinutes;
+      });
+
+      setHours((prevHours) => {
+        if (minutes === 0 && seconds === 0) {
+          if (prevHours > 0) {
+            return prevHours - 1;
+          }
+
+          return 23;
+        }
+        return prevHours;
+      });
+
+      setDays((prevDays) => {
+        if (hours === 0 && minutes === 0 && seconds === 0) {
+          if (prevDays > 0) {
+            return prevDays - 1;
+          }
+
+          clearInterval(countdown);
+          setIsCountdownFinished(true);
+          navigate(`/endtime/${language}`);
+          return 0;
+        }
+        return prevDays;
+      });
     }, 1000);
 
     return () => clearInterval(countdown);
-  }, [days, hours, minutes, seconds, navigate, language]);
+  }, [seconds, minutes, hours, days, navigate, language]); // 🔥 `useEffect` bog‘liqliklari to‘g‘ri berildi
 
   const handleSubscribe = async () => {
     if (email.trim() === "") {
@@ -137,42 +153,43 @@ const Comingsoon = () => {
     const selectedLang = e.target.value;
     setLanguage(selectedLang);
     localStorage.setItem("language", selectedLang);
-
-    // URL ni yangilash
-    navigate(`/dashboard/${selectedLang}`); // Yangi til bilan URL-ni yangilang
+  
+    // 🌍 Hamma sahifalarda tilni yangilash
+    navigate(window.location.pathname.replace(/\/(en|uz|ru)/, `/${selectedLang}`));
   };
+  
 
   return (
-    <div className="dashboard">
+    <div className='dashboard'>
       <Notification message={notification.message} type={notification.type} />
 
-      <div className="language-selector">
-        <select id="language" value={language} onChange={handleLanguageChange}>
-          <option value="en">English</option>
-          <option value="uz">O'zbek</option>
-          <option value="ru">Русский</option>
+      <div className='language-selector'>
+        <select id='language' value={language} onChange={handleLanguageChange}>
+          <option value='en'>English</option>
+          <option value='uz'>O'zbek</option>
+          <option value='ru'>Русский</option>
         </select>
       </div>
-      <h1 className="title">
+      <h1 className='title'>
         {translations[language].welcome} <br />
         <span>My Project’s</span> | {translations[language].platform}
       </h1>
 
       {!isCountdownFinished ? ( // Hisoblagich tugamasa
-        <div className="countdown">
-          <div className="box">
+        <div className='countdown'>
+          <div className='box'>
             <span>{String(days).padStart(2, "0")}</span>
             {translations[language].days}
           </div>
-          <div className="box">
+          <div className='box'>
             <span>{String(hours).padStart(2, "0")}</span>
             {translations[language].hours}
           </div>
-          <div className="box">
+          <div className='box'>
             <span>{String(minutes).padStart(2, "0")}</span>
             {translations[language].minutes}
           </div>
-          <div className="box">
+          <div className='box'>
             <span>{String(seconds).padStart(2, "0")}</span>
             {translations[language].seconds}
           </div>
@@ -183,34 +200,36 @@ const Comingsoon = () => {
 
       <form>
         <input
-          type="email"
-          name="email"
-          id="email"
+          type='email'
+          name='email'
+          id='email'
           placeholder={translations[language].notifyPlaceholder}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        <button className="send-btn" type="button" onClick={handleSubscribe}>
-          <img src="/icons/email.png" alt="email" />
+        <button className='send-btn' type='button' onClick={handleSubscribe}>
+          <img src='/icons/email.png' alt='email' />
         </button>
-        <p className="social">{translations[language].socialText}</p>
-        <ul className="social-ul">
+       <div className="comming-social">
+       <p className='social'>{translations[language].socialText}</p>
+        <ul className='social-ul'>
           <li>
-            <a href="#">
-              <img src="/icons/telegram.png" alt="" />
+            <a href='#'>
+              <img src='/icons/telegram.png' alt='' />
             </a>
           </li>
           <li>
-            <a href="#">
-              <img src="/icons/x.png" alt="" />
+            <a href='#'>
+              <img src='/icons/x.png' alt='' />
             </a>
           </li>
           <li>
-            <a href="#">
-              <img src="/icons/discord.png" alt="" />
+            <a href='#'>
+              <img src='/icons/discord.png' alt='' />
             </a>
           </li>
         </ul>
+       </div>
       </form>
     </div>
   );

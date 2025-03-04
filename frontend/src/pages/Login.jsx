@@ -75,23 +75,25 @@ const Login = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
       });
-
+  
       if (!response.ok) throw new Error("Login xatosi");
-
+  
       const data = await response.json();
-
-      // 🔥 Foydalanuvchini localStorage ga saqlash
       localStorage.setItem("user", JSON.stringify(data.user));
-
-      setMessage(text.loginSuccess);
+  
+      // ✅ NOTIFICATION: "Tizimga kirdi"
+      setMessage("Tizimga muvaffaqiyatli kirdingiz!");
       setType("success");
-
-      navigate(`/dashboard/${lang}`);
+  
+      setTimeout(() => {
+        navigate(`/dashboard/${lang}`);
+      }, 1500); // ✅ 1.5 soniya kutib dashboardga o'tkazish
     } catch (error) {
       setMessage(text.loginError);
       setType("error");
     }
   };
+  
 
   return (
     <div className="loginSide">

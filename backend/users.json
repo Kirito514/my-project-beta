@@ -5,19 +5,5 @@
     "email": "testmail@gmail.com",
     "password": "$2b$10$BdUfXVbkbfPqUomEYlqFUuWSwJ0m67VXsM/Glt31cnApcSuY4.6yO",
     "date": "2025-03-02T15:08:25.710Z"
-  },
-  {
-    "id": 2,
-    "name": "shohjahon",
-    "email": "testmail1@gmail.com",
-    "password": "$2b$10$WIs8OeqMeFlq7/y5nS.JuefnWTWg5LdKFFCzDUJiiq.TLRzwq9loC",
-    "date": "2025-03-02T15:50:18.060Z"
-  },
-  {
-    "id": 3,
-    "name": "shohjahon",
-    "email": "testmail11@gmail.com",
-    "password": "$2b$10$KytSPmjiieJd43dBYwhXMeS8ftZcB0sce7aMgvoblYL27XqvYeDeu",
-    "date": "2025-03-02T15:54:16.882Z"
   }
 ]
