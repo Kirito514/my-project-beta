@@ -1,7 +1,7 @@
 const express = require("express");
 const fs = require("fs");
 const cors = require("cors");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
 const app = express();
@@ -10,7 +10,7 @@ app.use(cors());
 
 const usersFile = "users.json";
 const emailsFile = "emails.json";
-const secretKey = "supersecretkey"; // JWT uchun maxfiy kalit
+const secretKey = process.env.SECRET_KEY || "supersecretkey"; 
 
 const messages = {
   en: {
@@ -100,9 +100,10 @@ app.post("/signup", async (req, res) => {
   const lowerCaseEmail = email.toLowerCase();
 
   let users = [];
-  if (fs.existsSync(usersFile)) {
-    users = JSON.parse(fs.readFileSync(usersFile));
-  }
+if (fs.existsSync(usersFile)) {
+  const data = await fs.promises.readFile(usersFile, "utf8");
+  users = JSON.parse(data);
+}
 
   if (users.some((user) => user.email === lowerCaseEmail)) {
     return res.status(400).json({ message: messages[language].emailExists });
@@ -175,5 +176,10 @@ app.post("/login", async (req, res) => {
   });
 });
 
+app.get("/", (req, res) => {
+  res.send("Backend ishlayapti! 🚀");
+});
+
 // 🚀 Serverni ishga tushirish
-app.listen(5000, () => console.log("✅ Server running on port 5000"));
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`✅ Server running on port ${PORT}`));

@@ -33,3 +33,24 @@
     transform: rotate(360deg);
   }
 }
+
+/* Scrollbar'ni stil qilish */
+::-webkit-scrollbar {
+  width: 6px; /* 🔹 Kengligi */
+}
+
+/* Scrollbar track (orqa fon) */
+::-webkit-scrollbar-track {
+  background: transparent; /* 🔹 Orqa fon ko‘rinmas */
+}
+
+/* Scrollbar thumb (harakatlanuvchi qismi) */
+::-webkit-scrollbar-thumb {
+  background: #ffffff50; /* 🔹 Shaffof oq */
+  border-radius: 4px; /* 🔹 Burchaklarni yumaloqlash */
+}
+
+/* Hover bo‘lganda scroll thumb */
+::-webkit-scrollbar-thumb:hover {
+  background: #ffffff70; /* 🔹 Biroz to‘qroq shaffof oq */
+}

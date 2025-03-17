@@ -1,0 +1,91 @@
+.homePage {
+   width: 100vw;
+   height: 100vh;
+   display: flex;
+   /* justify-content: center; */
+   flex-direction: column;
+   align-items: center;
+ 
+   backdrop-filter: blur(10px); /* Blur effekti */
+   -webkit-backdrop-filter: blur(10px); /* Safari uchun */
+   color: #fff;
+   overflow: hidden;
+}
+.homePageNav {
+   width: 1394px;
+   height: 35px;
+   /* outline: 1px solid red; */
+   margin-top: 25px;
+   margin-left: 70px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.homePageTitle {
+   background: fixed;
+   display: flex;
+   align-items: center;
+}
+
+.homePageTitle img {
+   width: 60px;
+   height: 30px;
+}
+
+.homePageTitle h3 {
+   font-size: 20px;
+   font-family: "Merienda-Bold";
+   color: #ffffff;
+   margin-left: 10px;
+}
+.homePageLink {
+   display: flex;
+   margin-left: 220px;
+   gap: 25px;
+}
+
+.homePageLink li {
+   color: #ffffff;
+   font-size: 14px;
+   font-family: 'Inter-SemiBold';
+}
+
+.homePageLink li a:hover {
+   color: #ffffff99;
+   text-decoration: underline;
+}
+
+.homePageStartedBtn {
+   width: 120px;
+   height: 35px;
+   border-radius: 10px;
+   background-color: #ffffff20;
+   border: 2px solid #EBEBEB50;
+   margin-left: 300px;
+}
+
+.homePageStartedBtn a {
+   color: #ffffff;
+   font-size: 14px;
+   font-family: 'Ubuntu-Medium';
+}
+
+.homePageStartedBtn:hover {
+   background-color: #ffffff50;
+}
+
+.pageContentTitle {
+   font-size: 48px;
+   font-family: 'Inter-Medium';
+   text-align: center;
+   margin-top: 100px;
+}
+
+.pageContentTitleText {
+   color: #ffffff60;
+   font-size: 18px;
+   font-family: 'Inter-Medium';
+   text-align: center;
+   margin-top: 15px;
+}

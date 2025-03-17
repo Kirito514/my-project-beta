@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import Notification from "../components/Notification";
+import { useLoading } from "../context/LoadingContext"; // 🌍 Global Loading
+import LoadingSpinner from "../components/LoadingSpinner"; // 🔄 Spinner
 import "./Login.css";
 
 const messages = {
@@ -52,6 +54,7 @@ const Login = () => {
   const lang = pathSegments[pathSegments.length - 1] || "en";
   const text = messages[lang] || messages["en"];
 
+  const { setLoading } = useLoading(); // ✅ Global Loading
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
@@ -69,6 +72,8 @@ const Login = () => {
       setType("error");
       return;
     }
+
+    setLoading(true); // 🔄 Yuklanish boshlandi
     try {
       const response = await fetch("http://localhost:5000/login", {
         method: "POST",
@@ -86,6 +91,7 @@ const Login = () => {
       setType("success");
   
       setTimeout(() => {
+        setLoading(false); // ✅ Yuklanish tugadi
         navigate(`/dashboard/${lang}`);
       }, 1500); // ✅ 1.5 soniya kutib dashboardga o'tkazish
     } catch (error) {
@@ -97,6 +103,7 @@ const Login = () => {
 
   return (
     <div className="loginSide">
+      <LoadingSpinner /> {/* 🔄 Spinner qo‘shildi */}
       <Notification message={message} type={type} />
       <div className="loginLeftSide">
         <button

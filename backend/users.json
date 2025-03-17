@@ -5,5 +5,33 @@
     "email": "testmail@gmail.com",
     "password": "$2b$10$BdUfXVbkbfPqUomEYlqFUuWSwJ0m67VXsM/Glt31cnApcSuY4.6yO",
     "date": "2025-03-02T15:08:25.710Z"
+  },
+  {
+    "id": 2,
+    "name": "shohjahon",
+    "email": "testmail11@gmail.com",
+    "password": "$2b$10$ul9C.KNZy2jeT5iqaC663.C09LpkSHNFsO0MNJifTDy5ts4.JIvZK",
+    "date": "2025-03-05T15:16:36.663Z"
+  },
+  {
+    "id": 3,
+    "name": "orzubek",
+    "email": "testmail22@gmail.com",
+    "password": "$2b$10$AUh3XLNnqJOMh4zZQGtPmOmKQ8Xl3VjDb0L.46x5LzsCZ57OmUlO.",
+    "date": "2025-03-05T15:46:39.080Z"
+  },
+  {
+    "id": 4,
+    "name": "Behro'z",
+    "email": "testmail112@gmail.com",
+    "password": "$2b$10$jV814okVWMNaeQ63ifzee.FtJPHLFba07dEC/aJfYeBgexjbC17NO",
+    "date": "2025-03-16T15:13:41.151Z"
+  },
+  {
+    "id": 5,
+    "name": "My Projects",
+    "email": "student0949@gmail.com",
+    "password": "$2b$10$GF0d03zNYKYHlzBviUEpDun1lTMphnDExUpQoow/6KMDFYfYJ13W6",
+    "date": "2025-03-17T17:09:57.287Z"
   }
 ]

@@ -12,12 +12,12 @@ const NotFound = () => {
   }
 
   return (
-    <div className="notFound">
+    <div className='notFound'>
       <h1>404</h1>
       <h2>Page Not Found</h2>
       <p>Sorry, the page you are looking for does not exist.</p>
-      <Link to={`/comingsoon/${lang}`} className="home-link">
-        <i class="fa-regular fa-circle-left"></i>Back to home
+      <Link to={`/comingsoon/${lang}`} className='home-link'>
+        <i class='fa-regular fa-circle-left'></i>Back to home
       </Link>{" "}
       {/* ✅ Foydalanuvchi tanlagan tilga yo‘naltirish */}
     </div>

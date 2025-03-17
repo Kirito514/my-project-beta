@@ -11,6 +11,7 @@
   -webkit-backdrop-filter: blur(10px);
   /* Safari uchun */
   color: #fff;
+  overflow: hidden;
 }
 
 .leftSide {

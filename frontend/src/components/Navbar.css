@@ -1,0 +1,135 @@
+.navbar {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   max-width: 1295px;
+   height: 65px;
+   padding: 0 20px;
+   border-radius: 10px;
+}
+
+.search-div {
+   position: relative;
+   display: flex;
+   align-items: center;
+}
+
+.search-div::before {
+   content: "";
+   position: absolute;
+   top: 50%;
+   right: 0px;
+   transform: translateY(-50%);
+   width: 40px;
+   height: 40px;
+   background: #ffffff30;
+   border-top-right-radius: 30px;
+   border-bottom-right-radius: 30px;
+}
+
+.search-inp {
+   width: 1000px;
+   height: 40px;
+   color: #ffffff;
+   background: #ffffff30;
+   border: 1px solid #ebebeb75;
+   padding: 0 40px;
+   border-radius: 30px;
+   font-size: 13px;
+   font-family: "Inter", sans-serif;
+}
+
+.search-inp::placeholder {
+   color: #ffffff40;
+   letter-spacing: 1px;
+}
+
+.search-inp-icon {
+   position: absolute;
+   /* left: 12px; */
+   right: 12px;
+   top: 50%;
+   transform: translateY(-50%);
+   width: 18px;
+   height: 18px;
+   z-index: 1;
+   cursor: pointer;
+}
+
+/* Chrome, Edge, Safari uchun */
+input::-webkit-search-cancel-button {
+   appearance: none;
+   /* 🔹 Default ko‘rinishni olib tashlash */
+   width: 18px;
+   height: 18px;
+   background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M18.3 5.7c-.4-.4-1-.4-1.4 0L12 10.6 7.1 5.7c-.4-.4-1-.4-1.4 0s-.4 1 0 1.4L10.6 12l-4.9 4.9c-.4.4-.4 1 0 1.4s1 .4 1.4 0L12 13.4l4.9 4.9c.4.4 1 .4 1.4 0s.4-1 0-1.4L13.4 12l4.9-4.9c.4-.4.4-1 0-1.4z"/></svg>') no-repeat center;
+   background-size: contain;
+   cursor: pointer;
+   /* 🔹 Hover bo‘lganda ko‘rsatkich o‘zgaradi */
+   opacity: 0.8;
+   /* 🔹 Biroz shaffof */
+   transition: opacity 0.2s ease-in-out;
+}
+
+/* Hover effekti */
+input::-webkit-search-cancel-button:hover {
+   opacity: 1;
+}
+
+.search-inp:focus {
+   background: #ffffff20;
+   outline: 2px solid #ffffff90;
+}
+
+.notific-btn {
+   width: 30px;
+   height: 30px;
+   border-radius: 50%;
+   border: 1px solid #ebebeb75;
+   background: #ffffff30;
+   /* border: none; */
+   cursor: pointer;
+   margin-left: 25px;
+   margin-right: 20px;
+}
+
+.notific-btn:hover {
+   background: #ffffff50;
+}
+
+.notific-btn img {
+   width: 20px;
+   height: 20px;
+}
+
+.user {
+   display: flex;
+   /* border: 1px solid red; */
+}
+
+.user-pic {
+   width: 40px;
+   height: 40px;
+   border-radius: 50%;
+   background-color: #ffffff50;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.user-selection {
+   background: transparent;
+   border: none;
+   padding: 5px 10px;
+   border-radius: 5px;
+   color: #ffffff;
+   font-family: 'Inter-SemiBold';
+   font-size: 14px;
+   margin-left: 5px;
+   cursor: pointer;
+}
+
+.user-selection option {
+   background-color: #1e3a47;
+   color: white;
+}

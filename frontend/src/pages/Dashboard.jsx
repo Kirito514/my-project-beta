@@ -1,28 +1,30 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import Sidebar from "../components/Sidebar"; // ✅ Sidebar komponentini qo‘shamiz
+import React, { useEffect } from "react";
+import "./Dashboard.css";
+import Sidebar from "../components/Sidebar";
+import Navbar from "../components/Navbar";
+import { useLoading } from "../context/LoadingContext";
+import LoadingSpinner from "../components/LoadingSpinner"; 
+import DashboardContent from "../components/DashboardContent"; // 🔥 Ajratilgan komponent
 
 const Dashboard = () => {
-  const navigate = useNavigate();
-  const { lang } = useParams();
-  const [user, setUser] = useState(null);
+  const { loading, setLoading } = useLoading();
 
   useEffect(() => {
-    const storedUser = JSON.parse(localStorage.getItem("user"));
+    setLoading(true);
 
-    if (!storedUser) {
-      navigate(`/login/${lang}`); // 🔴 Agar user yo‘q bo‘lsa, login sahifasiga o‘tkazish
-    } else {
-      setUser(storedUser);
-    }
-  }, [navigate, lang]);
+    setTimeout(() => {
+      setLoading(false);
+    }, 1500);
+  }, [setLoading]);
 
-  return (
-    <div style={{ display: "flex" }}>
-      <Sidebar /> {/* ✅ Sidebar qo‘shildi */}
-      <div style={{ padding: "20px", flex: 1, textAlign: "center" }}>
-        <h1>Dashboard</h1>
-        {user ? <h2>Welcome, {user.name}!</h2> : <p>Loading...</p>}
+  return loading ? ( 
+    <LoadingSpinner />
+  ) : (
+    <div className="dashboard">
+      <Sidebar />
+      <div className="main-content">
+        <Navbar />
+        <DashboardContent /> {/* 👈 Ajratilgan komponentni chaqiryapmiz */}
       </div>
     </div>
   );

@@ -58,37 +58,36 @@ const Endtime = () => {
   };
 
   return (
-    <div className="endtime">
+    <div className='endtime'>
       {showConfetti && (
         <Confetti numberOfPieces={150} gravity={0.3} wind={0} recycle={false} />
       )}
 
       {/* Home tugmasi */}
-      <button className="home-btn" onClick={() => navigate(`/home/${lang}`)}>
+      <button className='home-btn' onClick={() => navigate(`/home/${lang}`)}>
         Home
       </button>
 
       {/* 🌍 Til tanlash */}
-      <div className="language-selector">
-        <select id="language" value={lang} onChange={handleLanguageChange}>
-          <option value="en">English</option>
-          <option value="uz">O'zbek</option>
-          <option value="ru">Русский</option>
+      <div className='language-selector'>
+        <select id='language' value={lang} onChange={handleLanguageChange}>
+          <option value='en'>English</option>
+          <option value='uz'>O'zbek</option>
+          <option value='ru'>Русский</option>
         </select>
       </div>
 
-      <div className="endtime-message">
-        <h1 className="endtime-title">{texts[lang].title}</h1>
-        <p className="endtime-text">{texts[lang].message}</p>
+      <div className='endtime-message'>
+        <h1 className='endtime-title'>{texts[lang].title}</h1>
+        <p className='endtime-text'>{texts[lang].message}</p>
 
         {/* Ro‘yxatdan o‘tish tugmasi */}
         <button
-          className="endtime-btn"
-          type="button"
+          className='endtime-btn'
+          type='button'
           onClick={handleSignUp}
-          disabled={isLoading}
-        >
-          {isLoading ? <span className="spinner"></span> : texts[lang].signUp}
+          disabled={isLoading}>
+          {texts[lang].signUp}
         </button>
       </div>
     </div>

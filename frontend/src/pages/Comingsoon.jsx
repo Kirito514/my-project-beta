@@ -61,52 +61,50 @@ const Comingsoon = () => {
   useEffect(() => {
     const countdown = setInterval(() => {
       setSeconds((prevSeconds) => {
-        if (prevSeconds > 0) {
-          return prevSeconds - 1;
-        }
-
+        if (prevSeconds > 0) return prevSeconds - 1;
         return 59;
       });
-
+  
       setMinutes((prevMinutes) => {
         if (seconds === 0) {
-          if (prevMinutes > 0) {
-            return prevMinutes - 1;
-          }
-
+          if (prevMinutes > 0) return prevMinutes - 1;
           return 59;
         }
         return prevMinutes;
       });
-
+  
       setHours((prevHours) => {
         if (minutes === 0 && seconds === 0) {
-          if (prevHours > 0) {
-            return prevHours - 1;
-          }
-
+          if (prevHours > 0) return prevHours - 1;
           return 23;
         }
         return prevHours;
       });
-
+  
       setDays((prevDays) => {
         if (hours === 0 && minutes === 0 && seconds === 0) {
           if (prevDays > 0) {
             return prevDays - 1;
           }
-
+  
           clearInterval(countdown);
-          setIsCountdownFinished(true);
-          navigate(`/endtime/${language}`);
+          setIsCountdownFinished(true); // ✅ Bu yerdan keyin `useEffect` orqali navigatsiya qilinadi
           return 0;
         }
         return prevDays;
       });
     }, 1000);
-
+  
     return () => clearInterval(countdown);
-  }, [seconds, minutes, hours, days, navigate, language]); // 🔥 `useEffect` bog‘liqliklari to‘g‘ri berildi
+  }, [seconds, minutes, hours, days]);
+  
+  // ✅ Hisoblagich tugaganidan keyin `navigate()` chaqiriladi
+  useEffect(() => {
+    if (isCountdownFinished) {
+      navigate(`/endtime/${language}`);
+    }
+  }, [isCountdownFinished, navigate, language]);
+  
 
   const handleSubscribe = async () => {
     if (email.trim() === "") {
@@ -153,14 +151,15 @@ const Comingsoon = () => {
     const selectedLang = e.target.value;
     setLanguage(selectedLang);
     localStorage.setItem("language", selectedLang);
-  
+
     // 🌍 Hamma sahifalarda tilni yangilash
-    navigate(window.location.pathname.replace(/\/(en|uz|ru)/, `/${selectedLang}`));
+    navigate(
+      window.location.pathname.replace(/\/(en|uz|ru)/, `/${selectedLang}`)
+    );
   };
-  
 
   return (
-    <div className='dashboard'>
+    <div className='CommingSoon'>
       <Notification message={notification.message} type={notification.type} />
 
       <div className='language-selector'>
@@ -210,26 +209,26 @@ const Comingsoon = () => {
         <button className='send-btn' type='button' onClick={handleSubscribe}>
           <img src='/icons/email.png' alt='email' />
         </button>
-       <div className="comming-social">
-       <p className='social'>{translations[language].socialText}</p>
-        <ul className='social-ul'>
-          <li>
-            <a href='#'>
-              <img src='/icons/telegram.png' alt='' />
-            </a>
-          </li>
-          <li>
-            <a href='#'>
-              <img src='/icons/x.png' alt='' />
-            </a>
-          </li>
-          <li>
-            <a href='#'>
-              <img src='/icons/discord.png' alt='' />
-            </a>
-          </li>
-        </ul>
-       </div>
+        <div className='comming-social'>
+          <p className='social'>{translations[language].socialText}</p>
+          <ul className='social-ul'>
+            <li>
+              <a href='#'>
+                <img src='/icons/telegram.png' alt='' />
+              </a>
+            </li>
+            <li>
+              <a href='#'>
+                <img src='/icons/x.png' alt='' />
+              </a>
+            </li>
+            <li>
+              <a href='#'>
+                <img src='/icons/discord.png' alt='' />
+              </a>
+            </li>
+          </ul>
+        </div>
       </form>
     </div>
   );
